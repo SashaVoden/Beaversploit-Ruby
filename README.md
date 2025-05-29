@@ -8,8 +8,7 @@ I am a small developer and all the problems with the laws are yours
 
 ## Features  
 - Port scanning and host discovery  
-- HTTP header analysis  
-- SQL injection and XSS vulnerability testing  
+- HTTP header analysis   
 - Modular architecture for easy expansion  
 - More
 
