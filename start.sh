@@ -1,3 +1,2 @@
 #!/bin/bash
-clear
-ruby bsf.rb
+sudo ruby bsf.rb

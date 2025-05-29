@@ -1,3 +1,2 @@
 @echo off
-cls
-ruby bsf.rb
+powershell -Command "Start-Process ruby.exe -ArgumentList 'bsf.rb' -Verb RunAs"
