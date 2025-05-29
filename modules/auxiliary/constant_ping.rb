@@ -1,6 +1,6 @@
 require 'net/ping'
 
-class SpamPing
+class ConstantPing
   def initialize
     @target = nil
     @interval = 0.01
