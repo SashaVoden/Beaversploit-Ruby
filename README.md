@@ -20,6 +20,15 @@ bundle install
 ```
 
 ## Run the framework
+for Linux/Macos:
+```sh
+sudo ruby bsf.rb
+```
+or start.sh
+
+for Windows:
+admin cmd
 ```sh
 ruby bsf.rb
 ```
+or start.bat
