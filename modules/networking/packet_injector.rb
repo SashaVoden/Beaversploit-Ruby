@@ -1,25 +1,29 @@
 require 'socket'
 
 class PacketInjector
+  attr_accessor :interface, :payload
+
   def initialize
-    @interface = nil
+    @interface = "eth0"
     @payload = nil
   end
 
   def detect_os
-    case RUBY_PLATFORM
-    when /linux/
-      puts "[+] Running on Linux"
+    if RUBY_PLATFORM =~ /linux/
+      puts "[+] Linux detected"
+      true
     else
-      puts "[!] Unsupported OS: Windows detected"
-      exit
+      puts "[-] This module is Linux-only. Detected OS: #{RUBY_PLATFORM}"
+      false
     end
   end
 
   def check_root
     if Process.uid != 0
-      puts "[!] Root required. run BeaverSploit as sudo"
-      exit
+      puts "[-] Root required. Run as sudo"
+      false
+    else
+      true
     end
   end
 
@@ -30,16 +34,20 @@ class PacketInjector
     when "payload"
       @payload = value
     else
-      puts "[!] Unknown parameter: #{option}"
+      puts "[-] Unknown option: #{option}"
     end
   end
 
-  def run
-    detect_os
-    check_root
+  def show_options
+    puts "[+] Interface: #{@interface}"
+    puts "[+] Payload: #{@payload || 'Not set'}"
+  end
 
-    if @interface.nil? || @payload.nil?
-      puts "[!] Interface and payload must be set!"
+  def run
+    return unless detect_os && check_root
+
+    if @payload.nil?
+      puts "[-] Payload must be set before running."
       return
     end
 
@@ -55,7 +63,11 @@ class PacketInjector
 
       puts "[+] Packets sent successfully!"
     rescue => e
-      puts "[!] Error: #{e.message}"
+      puts "[-] Error: #{e.message}"
     end
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  pi = PacketInjector.new
 end

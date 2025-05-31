@@ -1,6 +1,6 @@
 class ModulesInstaller
   def initialize(repo_url = nil, target_directory = "modules")
-    @repo_url = repo_url || "https://github.com/YOUR_USERNAME/BeaverSploit-modules.git"
+    @repo_url = repo_url || "https://github.com/SashaVoden/BeaverSploit-Ruby"
     @target_directory = target_directory
   end
 
