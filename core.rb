@@ -5,8 +5,8 @@ module BeaverSploit
     def initialize
       @modules = {}
       @plugins = []
-      load_modules   # Загружаем модули
-      load_plugins   # Затем загружаем плагины
+      load_modules
+      load_plugins
     end
 
     def instantiate_module_from_file(file)
@@ -51,7 +51,7 @@ module BeaverSploit
       Dir.glob(File.join(base, '**', '*.rb')).each do |file|
         begin
           puts "[+] Executing plugin: #{file}"
-          require file # Просто загружаем и выполняем плагин
+          require file
           @plugins << file
         rescue => e
           puts "[-] Failed to execute plugin: #{file} (#{e.message})"
