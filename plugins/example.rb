@@ -1,1 +1,1 @@
-puts "Plugin example [BETA]"
+puts "Plugin example"
