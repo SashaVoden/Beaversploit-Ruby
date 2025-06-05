@@ -10,8 +10,7 @@ Thumbs.db
 *.sqlite3
 found/
 
-/generated/*
-*.sh
+/generated/*.sh
 *.bat
 *.ps1
 
