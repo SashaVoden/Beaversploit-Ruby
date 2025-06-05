@@ -46,18 +46,27 @@ module BeaverSploit
       end
     end
 
-    def load_plugins
-      base = File.join(__dir__, 'plugins')
-      Dir.glob(File.join(base, '**', '*.rb')).each do |file|
-        begin
-          puts "[+] Executing plugin: #{file}"
-          require file
-          @plugins << file
-        rescue => e
-          puts "[-] Failed to execute plugin: #{file} (#{e.message})"
-        end
+   def load_plugins
+    base = File.join(__dir__, 'plugins')
+    Dir.glob(File.join(base, '**', '*.{rb,py,lua}')).each do |file|
+      extension = File.extname(file)
+    
+      puts "[+] Executing plugin: #{file}"
+
+      case extension
+      when '.rb'  
+        require file
+      when '.py'  
+        system("python #{file}")
+      when '.lua' 
+        system("lua #{file}")
+      else
+        puts "[-] Unsupported plugin format: #{file}"
       end
+
+      @plugins << file
     end
+  end
 
     def list_modules
       puts "\n*** Available Modules ***"
