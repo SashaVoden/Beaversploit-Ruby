@@ -35,11 +35,5 @@ function check_interpreters()
     print("    Lua:", lua)
 end
 
-function check_network()
-    local net_info = os.execute("ipconfig") or os.execute("ifconfig")
-    print("[+] Network Interfaces Detected:", net_info)
-end
-
 system_info()
 check_interpreters()
-check_network()
