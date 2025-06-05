@@ -10,6 +10,11 @@ Thumbs.db
 *.sqlite3
 found/
 
+/generated/*
+*.sh
+*.bat
+*.ps1
+
 /vendor/bundle
 /log/
 /tmp/
