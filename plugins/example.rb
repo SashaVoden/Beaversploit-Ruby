@@ -1,1 +1,1 @@
-puts "Loading"
+puts "Plugin example [BETA]"
