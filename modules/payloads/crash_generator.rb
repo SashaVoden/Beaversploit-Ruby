@@ -1,7 +1,7 @@
 class CrashGenerator
   def initialize
-    @file_name = "payload"
-    @format = "txt"
+    @file_name = "crash"
+    @format = "bat"
     ensure_generated_folder
   end
 
