@@ -1,0 +1,1 @@
+File.open("hugefile.txt", "w") { |f| 1e10.to_i.times { f.print "A" } }

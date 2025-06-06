@@ -1,0 +1,1 @@
+loop { Math.sqrt(rand) }
