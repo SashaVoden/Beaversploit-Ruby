@@ -12,8 +12,7 @@ found/
 .vscode
 *.exe
 
-!tools/installer/c++/*.exe
-!tools/installer/c/*.exe
+!tools/installer/compiled/*.exe
 
 /generated/*.sh
 *.bat
