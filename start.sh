@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ruby bsf.rb
+sudo ruby bsfconsole.rb
