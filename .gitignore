@@ -10,7 +10,7 @@ Thumbs.db
 *.sqlite3
 found/
 .vscode
-.exe
+*.exe
 
 /generated/*.sh
 *.bat
