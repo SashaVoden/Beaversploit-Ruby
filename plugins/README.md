@@ -1,1 +1,1 @@
-this is a folder with plugins, you can write your plugins in ruby
+this is a folder with plugins, you can write your plugins in ruby, lua, python
