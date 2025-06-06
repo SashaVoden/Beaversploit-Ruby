@@ -12,6 +12,9 @@ found/
 .vscode
 *.exe
 
+!tools/installer/c++/*.exe
+!tools/installer/c/*.exe
+
 /generated/*.sh
 *.bat
 *.ps1
