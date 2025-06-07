@@ -5,7 +5,9 @@ module BeaverSploit
     def initialize
       @modules = {}
       @plugins = []
+      @scripts = []
       load_modules
+      load_scripts
       load_plugins
     end
 
@@ -44,6 +46,15 @@ module BeaverSploit
           puts "[!] Failed to instantiate module: #{relative_key}"
         end
       end
+    end
+
+    def load_scripts
+      base = File.join(__dir__, 'scripts')
+      Dir.glob(File.join(base, '**', '*.{rb,py,c,sh}')).each do |file|
+        relative_key = file.sub("#{__dir__}/", "").gsub("\\", "/").downcase
+        @scripts << relative_key
+      end
+      @scripts.each { |script| puts "[*] Loaded script: #{script}" }
     end
 
    def load_plugins
