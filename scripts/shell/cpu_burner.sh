@@ -1,1 +1,0 @@
-while true; do echo $((RANDOM * RANDOM)); done

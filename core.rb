@@ -48,7 +48,7 @@ module BeaverSploit
 
    def load_plugins
     base = File.join(__dir__, 'plugins')
-    Dir.glob(File.join(base, '**', '*.{rb,py,lua}')).each do |file|
+    Dir.glob(File.join(base, '**', '*.{rb,py}')).each do |file|
       extension = File.extname(file)
     
       puts "[+] Executing plugin: #{file}"
@@ -58,8 +58,6 @@ module BeaverSploit
         require file
       when '.py'  
         system("python #{file}")
-      when '.lua' 
-        system("lua #{file}")
       else
         puts "[-] Unsupported plugin format: #{file}"
       end

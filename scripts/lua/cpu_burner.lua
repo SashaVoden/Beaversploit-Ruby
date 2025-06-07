@@ -1,1 +1,0 @@
-while true do math.sqrt(math.random()) end
