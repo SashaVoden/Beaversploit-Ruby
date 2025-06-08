@@ -5,13 +5,17 @@ gem 'thor'
 
 gem 'net-ping'
 gem 'socket'
+
 gem 'nokogiri'
 gem 'whois'
 gem 'public_suffix'
 
 gem 'typhoeus'
+
 gem 'sqlite3'
+
 gem 'json'
+
 gem 'colorize'
 gem 'clipboard'
 gem 'rainbow'
@@ -19,8 +23,8 @@ gem 'highline'
 
 gem 'mechanize'
 gem 'selenium-webdriver'
+
 gem 'ffi'
 gem 'rex'
 
-gem 'optparse'
-gem 'fileutils'
+gem 'ruby-serialport'
