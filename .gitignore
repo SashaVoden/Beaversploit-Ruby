@@ -15,7 +15,7 @@ found/
 !tools/installer/compiled/*.exe
 
 /generated/*.sh
-*.bat
+/generated/*.bat
 *.ps1
 
 /vendor/bundle
