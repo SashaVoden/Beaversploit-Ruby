@@ -1,3 +1,5 @@
+require 'json'
+
 module BeaverSploit
   class Core
     attr_reader :modules, :plugins
@@ -6,6 +8,7 @@ module BeaverSploit
       @modules = {}
       @plugins = []
       @scripts = []
+      load_config
       load_modules
       load_scripts
       load_plugins
@@ -77,6 +80,31 @@ module BeaverSploit
     end
   end
 
+  def load_config
+    config_file = File.join(__dir__, 'data', 'config.json')
+    if File.exist?(config_file)
+      @config = JSON.parse(File.read(config_file))
+    else
+      @config = { "logo" => true}
+      File.write(config_file, JSON.pretty_generate(@config))
+    end
+  end
+
+  def show_logo
+      return unless @config["logo"]
+
+      puts <<EOF
+                                    _
+|+============================+    /|\\   +===============================+|
+|     _____      _____   ______   / | \\   ___       ___   ______   _____  |
+|    / (^) \\    / ___/  / __  /  /  |  \\  \\  \\     /  /  / ____/  /  _  \\ |
+|   / __  _/   / /__   / /_/ /  /   |   \\  \\  \\   /  /  / /___   /    __/ |
+|  / (__)  \\  / /___  / __  /  /    |    \\  \\  \\_/  /  / /___   /  /\\ \\   |
+| /________/ /_____/ /_/ /_/  /_____|_____\\  \\_____/  /_____/  /__/  \\_\\  |
+|                        BeaverSploit--Framework                          |
+|+=======================================================================+|
+EOF
+  end
     def list_modules
       puts "\n*** Available Modules ***"
       @modules.keys.each { |key| puts " - #{key}" }
